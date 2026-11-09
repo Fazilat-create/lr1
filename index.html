@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интерактивный учебник по вероятности и статистике для 8 класса">
+  <title>Вероятность и статистика · 8 класс</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="navbar__logo">
+      <img src="images/logo.svg" alt="Логотип" class="navbar__logo-img">
+      <span>Вероятность</span>
+    </a>
+
+    <button class="navbar__burger" id="burgerBtn"
+            aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="navbar__nav" id="mainNav">
+      <a href="index.html">Главная</a>
+      <a href="#quarters">Курс</a>
+      <a href="#about">О проекте</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="banner">
+      <div class="banner__inner">
+        <span class="badge badge--light">8 класс · интерактивный учебник</span>
+        <h1 class="banner__title">Мир вероятности и статистики</h1>
+        <p class="banner__text">
+          Четыре четверти, 34 темы, теория и домашние задания в одном месте.
+        </p>
+        <a href="#quarters" class="btn btn--primary btn--lg">Перейти к изучению →</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Объявления</h2>
+      <div class="alert alert--info">
+        <strong>Контрольная работа</strong> по II четверти — 15 декабря.
+        Повторите формулы дисперсии и стандартного отклонения.
+      </div>
+      <div class="alert alert--warning">
+        <strong>Обновление:</strong> добавлены интерактивные задания
+        в темах I четверти.
+      </div>
+    </section>
+
+    <section class="section" id="quarters">
+      <h2 class="section__title">Выберите четверть</h2>
+      <div class="quarters-grid" id="quartersGrid"></div>
+    </section>
+
+    <section class="section" id="about">
+      <h2 class="section__title">О проекте</h2>
+      <p class="section__text">
+        Учебник создан в рамках предмета «Компьютерные методы
+        в образовании, науке и производстве». Реализован на чистом
+        HTML, CSS и JavaScript с адаптивной вёрсткой для смартфонов,
+        планшетов и компьютеров.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 · Учебный проект · Вероятность и статистика · 8 класс</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
