@@ -82,7 +82,17 @@
     <p>© 2025 · Учебный проект · Вероятность и статистика · 8 класс</p>
   </footer>
 
-  <!-- Подложка для закрытия меню -->
+  <!-- Модальное окно для списка тем -->
+  <div class="modal" id="topicsModal">
+    <div class="modal__overlay" id="modalOverlay"></div>
+    <div class="modal__content">
+      <button class="modal__close" id="modalClose" aria-label="Закрыть">×</button>
+      <h2 class="modal__title" id="modalTitle">Темы</h2>
+      <div class="modal__list" id="modalList"></div>
+    </div>
+  </div>
+
+  <!-- Подложка для меню в шапке -->
   <div class="overlay" id="overlay"></div>
 
   <script src="js/main.js"></script>
