@@ -10,30 +10,21 @@
 
   --c-primary:   #f97316;
   --c-primary-d: #ea580c;
-  --c-info:      #dbeafe;
-  --c-info-t:    #1e40af;
-  --c-warning:   #fef3c7;
-  --c-warning-t: #92400e;
 
-  --r-sm: 8px;
   --r-md: 14px;
-  --r-lg: 22px;
-  --r-xl: 32px;
   --shadow-sm: 0 2px 8px rgba(120, 80, 40, .08);
   --shadow-md: 0 8px 24px rgba(120, 80, 40, .12);
+  --shadow-lg: 0 16px 40px rgba(120, 80, 40, .16);
 
-  --space-1: .5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
-  --space-4: 2rem;
   --space-5: 3rem;
 
-  --font: "Manrope", system-ui, -apple-system, Roboto, sans-serif;
+  --font: "Manrope", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
   --fs-sm: .875rem;
   --fs-md: 1rem;
   --fs-lg: 1.25rem;
   --fs-xl: 1.75rem;
-  --fs-2xl: 2.5rem;
 
   --header-h: 68px;
 }
@@ -42,7 +33,6 @@
    2. БАЗОВЫЕ СТИЛИ
    ============================================================ */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -55,20 +45,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img { max-width: 100%; display: block; }
-
 a { color: var(--c-primary-d); text-decoration: none; }
 a:hover { text-decoration: underline; }
-
 h1, h2, h3 { line-height: 1.15; }
-
 button { font-family: inherit; cursor: pointer; }
 
 /* ============================================================
    3. UI KIT
    ============================================================ */
-
-/* Button */
 .btn {
   display: inline-block;
   padding: .8rem 1.4rem;
@@ -77,7 +61,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 700;
   font-size: var(--fs-md);
   font-family: inherit;
-  transition: transform .15s, background .2s, color .2s;
+  transition: transform .15s, background .2s;
 }
 .btn--primary { background: var(--c-primary); color: #fff; }
 .btn--primary:hover {
@@ -86,23 +70,9 @@ button { font-family: inherit; cursor: pointer; }
   text-decoration: none;
 }
 
-/* Badge */
-.badge {
-  display: inline-block;
-  padding: .25rem .8rem;
-  border-radius: 999px;
-  font-size: .8rem;
-  font-weight: 600;
-  background: #fde8d3;
-  color: var(--c-primary-d);
-}
-.badge--light { background: #fff; color: var(--c-primary-d); }
-
 /* ============================================================
-   4. LAYOUT
+   4. NAVBAR
    ============================================================ */
-
-/* Navbar */
 .navbar {
   position: sticky;
   top: 0;
@@ -124,16 +94,26 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--c-text);
   font-size: var(--fs-lg);
 }
-.navbar__logo-img { width: 36px; height: 36px; }
-
+.navbar__logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--c-primary);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
 .navbar__nav {
   margin-left: auto;
   display: flex;
   align-items: center;
   gap: var(--space-3);
 }
-.navbar__nav a { color: var(--c-text); font-weight: 600; }
-.navbar__nav a:hover { color: var(--c-primary-d); text-decoration: none; }
+.navbar__nav > a { color: var(--c-text); font-weight: 600; }
+.navbar__nav > a:hover { color: var(--c-primary-d); text-decoration: none; }
 
 .navbar__burger {
   display: none;
@@ -152,7 +132,119 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 2px;
 }
 
-/* Hero */
+/* ============================================================
+   5. DROPDOWN — выпадающее меню «Курс»
+   ============================================================ */
+.dropdown { position: relative; }
+
+.dropdown__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  background: none;
+  border: none;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--c-text);
+  padding: .4rem .2rem;
+  transition: color .2s;
+}
+.dropdown__toggle:hover { color: var(--c-primary-d); }
+
+.dropdown__chevron {
+  transition: transform .2s;
+}
+.dropdown.is-open .dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown__menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + .5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--c-surface);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  padding: .5rem;
+  z-index: 200;
+}
+.dropdown.is-open .dropdown__menu { display: block; }
+
+/* Группа четверти внутри меню */
+.dropdown__group {
+  border-bottom: 1px solid var(--c-border);
+}
+.dropdown__group:last-child { border-bottom: none; }
+
+.dropdown__group-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .75rem .8rem;
+  background: none;
+  border: none;
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--c-text);
+  text-align: left;
+  border-radius: 10px;
+  transition: background .15s;
+}
+.dropdown__group-toggle:hover { background: #fbf2e7; }
+
+.dropdown__group-num {
+  display: inline-block;
+  min-width: 34px;
+  font-weight: 800;
+  color: var(--c-primary-d);
+  font-size: .8rem;
+  opacity: .8;
+}
+
+.dropdown__group-arrow {
+  font-size: .75rem;
+  color: var(--c-muted);
+  transition: transform .2s;
+}
+.dropdown__group.is-open .dropdown__group-arrow {
+  transform: rotate(90deg);
+}
+
+/* Список тем внутри четверти */
+.dropdown__topics {
+  display: none;
+  padding: .25rem 0 .5rem .5rem;
+}
+.dropdown__group.is-open .dropdown__topics { display: block; }
+
+.dropdown__topic {
+  display: block;
+  padding: .5rem .8rem .5rem 1rem;
+  font-size: .88rem;
+  color: #374151;
+  border-radius: 8px;
+  transition: background .15s;
+}
+.dropdown__topic:hover {
+  background: #fff7ed;
+  color: var(--c-primary-d);
+  text-decoration: none;
+}
+.dropdown__topic-num {
+  color: var(--c-muted);
+  font-weight: 600;
+  margin-right: .4rem;
+}
+
+/* ============================================================
+   6. HERO
+   ============================================================ */
 .hero {
   display: flex;
   flex-direction: column;
@@ -177,7 +269,6 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 2.4rem;
   line-height: 1.05;
   margin-bottom: 1rem;
-  color: #1f2937;
   letter-spacing: -.02em;
 }
 .hero__desc {
@@ -185,10 +276,43 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 1.5rem;
   font-size: 1.05rem;
 }
-.hero__art { display: flex; justify-content: center; }
-.hero__svg { width: 200px; height: 200px; }
 
-/* Notice */
+.hero__art {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+.hero__circle {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__circle--1 {
+  width: 220px; height: 220px;
+  background: #fff7ed;
+  top: 0; left: 0;
+}
+.hero__circle--2 {
+  width: 170px; height: 170px;
+  background: #fed7aa;
+  top: 25px; left: 25px;
+}
+.hero__circle--3 {
+  width: 120px; height: 120px;
+  background: var(--c-primary);
+  top: 50px; left: 50px;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+/* ============================================================
+   7. NOTICE
+   ============================================================ */
 .notice {
   display: flex;
   align-items: center;
@@ -205,7 +329,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 .notice__icon { font-size: 1.2rem; }
 
-/* Section */
+/* ============================================================
+   8. SECTIONS & QUARTERS
+   ============================================================ */
 .section {
   max-width: 1120px;
   margin: 0 auto;
@@ -214,17 +340,14 @@ button { font-family: inherit; cursor: pointer; }
 .section__title {
   font-size: var(--fs-xl);
   margin-bottom: var(--space-3);
-  letter-spacing: -.01em;
 }
 
-/* Quarters grid */
 .quarters {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
 
-/* Quarter card */
 .quarter-card {
   position: relative;
   display: flex;
@@ -273,13 +396,14 @@ button { font-family: inherit; cursor: pointer; }
 }
 .quarter-card__btn:hover { background: #fff; text-decoration: none; }
 
-/* Цвета четвертей */
 .q1 { background: #ffedd5; color: #9a3412; }
 .q2 { background: #dbeafe; color: #1e40af; }
 .q3 { background: #dcfce7; color: #166534; }
 .q4 { background: #f3e8ff; color: #6b21a8; }
 
-/* About */
+/* ============================================================
+   9. ABOUT & FOOTER
+   ============================================================ */
 .about {
   max-width: 1120px;
   margin: 2rem auto;
@@ -295,7 +419,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 .about p { opacity: .8; max-width: 640px; }
 
-/* Footer */
 .footer {
   text-align: center;
   padding: 2rem 1rem;
@@ -305,7 +428,19 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================================
-   5. MEDIA QUERIES
+   10. OVERLAY (для закрытия меню по клику вне)
+   ============================================================ */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .3);
+  z-index: 50;
+}
+.overlay.is-visible { display: block; }
+
+/* ============================================================
+   11. MEDIA QUERIES
    ============================================================ */
 @media (min-width: 681px) {
   .quarters { grid-template-columns: repeat(2, 1fr); }
@@ -316,13 +451,16 @@ button { font-family: inherit; cursor: pointer; }
     padding: 4rem 2.5rem;
   }
   .hero__title { font-size: 3rem; }
-  .hero__svg { width: 280px; height: 280px; }
+  .hero__art { margin: 0; }
 }
 
 @media (min-width: 1024px) {
   .quarters { grid-template-columns: repeat(4, 1fr); }
-  .hero__title { font-size: 3.4rem; }
-  .hero__svg { width: 340px; height: 340px; }
+  .hero__title { font-size: 3.2rem; }
+  .hero__art { width: 260px; height: 260px; }
+  .hero__circle--1 { width: 260px; height: 260px; }
+  .hero__circle--2 { width: 200px; height: 200px; top: 30px; left: 30px; }
+  .hero__circle--3 { width: 140px; height: 140px; top: 60px; left: 60px; font-size: 3.4rem; }
 }
 
 @media (max-width: 680px) {
@@ -332,8 +470,7 @@ button { font-family: inherit; cursor: pointer; }
     display: none;
     position: absolute;
     top: var(--header-h);
-    left: 0;
-    right: 0;
+    left: 0; right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -343,11 +480,29 @@ button { font-family: inherit; cursor: pointer; }
     box-shadow: var(--shadow-md);
   }
   .navbar__nav.is-open { display: flex; }
-  .navbar__nav a {
+  .navbar__nav > a,
+  .dropdown__toggle {
     padding: .8rem .5rem;
     border-bottom: 1px solid var(--c-border);
+    width: 100%;
+    justify-content: space-between;
   }
-  .navbar__nav a:last-child { border-bottom: none; }
+  .navbar__nav > a:last-child { border-bottom: none; }
+
+  /* Меню курса на мобилке — раскрывается в потоке */
+  .dropdown { width: 100%; }
+  .dropdown__menu {
+    display: none;
+    position: static;
+    transform: none;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    background: #fefaf6;
+    max-height: none;
+  }
+  .dropdown.is-open .dropdown__menu { display: block; }
 
   .notice { margin: 1.5rem 1rem; }
   .hero { padding: 2.5rem 1.25rem; }
