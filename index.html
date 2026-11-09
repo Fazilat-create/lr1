@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Интерактивный учебник по вероятности и статистике для 8 класса">
   <title>Вероятность и статистика · 8 класс</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -11,17 +10,13 @@
 
   <header class="navbar">
     <a href="index.html" class="navbar__logo">
-      <img src="images/logo.svg" alt="Логотип" class="navbar__logo-img">
+      <img src="images/logo.svg" alt="" class="navbar__logo-img">
       <span>Вероятность</span>
     </a>
-
-    <button class="navbar__burger" id="burgerBtn"
-            aria-label="Открыть меню" aria-expanded="false">
+    <button class="navbar__burger" id="burgerBtn" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
-
     <nav class="navbar__nav" id="mainNav">
-      <a href="index.html">Главная</a>
       <a href="#quarters">Курс</a>
       <a href="#about">О проекте</a>
     </nav>
@@ -29,48 +24,51 @@
 
   <main>
 
-    <section class="banner">
-      <div class="banner__inner">
-        <span class="badge badge--light">8 класс · интерактивный учебник</span>
-        <h1 class="banner__title">Мир вероятности и статистики</h1>
-        <p class="banner__text">
-          Четыре четверти, 34 темы, теория и домашние задания в одном месте.
+    <!-- HERO: две колонки -->
+    <section class="hero">
+      <div class="hero__text">
+        <span class="hero__badge">8 класс · интерактивный учебник</span>
+        <h1 class="hero__title">Мир вероятности<br>и статистики</h1>
+        <p class="hero__desc">
+          Четыре четверти, 34 темы. Теория, примеры и домашние задания — в одном месте.
         </p>
-        <a href="#quarters" class="btn btn--primary btn--lg">Перейти к изучению →</a>
+        <a href="#quarters" class="btn btn--primary">Начать обучение →</a>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <!-- Декоративная SVG-иллюстрация -->
+        <svg viewBox="0 0 200 200" class="hero__svg">
+          <circle cx="100" cy="100" r="80" fill="#fff7ed"/>
+          <circle cx="100" cy="100" r="60" fill="#fed7aa"/>
+          <text x="100" y="115" text-anchor="middle" font-size="48" font-weight="800" fill="#ea580c">P</text>
+        </svg>
       </div>
     </section>
 
-    <section class="section">
-      <h2 class="section__title">Объявления</h2>
-      <div class="alert alert--info">
-        <strong>Контрольная работа</strong> по II четверти — 15 декабря.
-        Повторите формулы дисперсии и стандартного отклонения.
-      </div>
-      <div class="alert alert--warning">
-        <strong>Обновление:</strong> добавлены интерактивные задания
-        в темах I четверти.
-      </div>
-    </section>
+    <!-- Объявления: одна компактная полоса -->
+    <div class="notice">
+      <span class="notice__icon">📢</span>
+      <p><strong>Контрольная</strong> по II четверти — 15 декабря. Повторите формулы дисперсии.</p>
+    </div>
 
+    <!-- Четверти -->
     <section class="section" id="quarters">
       <h2 class="section__title">Выберите четверть</h2>
-      <div class="quarters-grid" id="quartersGrid"></div>
+      <div class="quarters" id="quartersGrid"></div>
     </section>
 
-    <section class="section" id="about">
-      <h2 class="section__title">О проекте</h2>
-      <p class="section__text">
-        Учебник создан в рамках предмета «Компьютерные методы
-        в образовании, науке и производстве». Реализован на чистом
-        HTML, CSS и JavaScript с адаптивной вёрсткой для смартфонов,
-        планшетов и компьютеров.
+    <!-- О проекте: коротко, на цветном фоне -->
+    <section class="about" id="about">
+      <h2>О проекте</h2>
+      <p>
+        Учебник создан в рамках предмета «Компьютерные методы в образовании,
+        науке и производстве». HTML, CSS, JavaScript, адаптивная вёрстка.
       </p>
     </section>
 
   </main>
 
   <footer class="footer">
-    <p>© 2025 · Учебный проект · Вероятность и статистика · 8 класс</p>
+    <p>© 2025 · Учебный проект</p>
   </footer>
 
   <script src="js/main.js"></script>
