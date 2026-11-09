@@ -32,26 +32,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ============================================================
-   3. РЕНДЕР КАРТОЧЕК (БЕЗ ТЕМ ВНУТРИ)
+   3. РЕНДЕР КАРТОЧЕК (ВСЯ КАРТОЧКА — КНОПКА)
    ============================================================ */
 function renderQuarters() {
   const grid = document.getElementById("quartersGrid");
   if (!grid) return;
   
+  // Используем тег <button> для всей карточки
   grid.innerHTML = courseData.map((q, index) => `
-    <article class="quarter-card ${q.cls}">
+    <button class="quarter-card ${q.cls}" data-index="${index}">
       <span class="quarter-card__num">${q.num}</span>
       <h3 class="quarter-card__title">${q.title}</h3>
       <p class="quarter-card__desc">${q.desc} · ${q.count} тем</p>
-      <!-- Кнопка теперь вызывает модалку -->
-      <button class="quarter-card__btn" data-index="${index}">Открыть →</button>
-    </article>
+    </button>
   `).join("");
 
-  // Обработчики для открытия модалки
-  grid.querySelectorAll(".quarter-card__btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      openTopicsModal(Number(btn.dataset.index));
+  // Обработчик на каждую карточку-кнопку
+  grid.querySelectorAll(".quarter-card").forEach(card => {
+    card.addEventListener("click", () => {
+      openTopicsModal(Number(card.dataset.index));
     });
   });
 }
@@ -97,7 +96,7 @@ function initModal() {
 }
 
 /* ============================================================
-   5. МЕНЮ В ШАПКЕ (ОСТАЛОСЬ БЕЗ ИЗМЕНЕНИЙ)
+   5. МЕНЮ В ШАПКЕ
    ============================================================ */
 function renderCourseMenu() {
   const menu = document.getElementById("courseMenu");
