@@ -168,50 +168,30 @@ button { font-family: inherit; cursor: pointer; }
 .notice__icon { font-size: 1.2rem; }
 
 /* ============================================================
-   7. SECTIONS & QUARTERS
+   7. SECTIONS & QUARTERS (СДЕЛАЛИ КРУПНЕЕ)
    ============================================================ */
 .section { max-width: 1120px; margin: 0 auto; padding: var(--space-5) var(--space-2); }
 .section__title { font-size: var(--fs-xl); margin-bottom: var(--space-3); }
 
-.quarters { display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: start; }
+.quarters { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
 
 .quarter-card {
-  position: relative; display: flex; flex-direction: column; padding: 1.5rem;
+  position: relative; display: flex; flex-direction: column; padding: 2rem;
   border-radius: 24px; transition: transform .2s, box-shadow .2s;
-  min-height: 190px;
+  min-height: 240px; /* Сделали карточки выше */
 }
-.quarter-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0, 0, 0, .08); }
-.quarter-card__num { font-size: 3.2rem; font-weight: 800; line-height: 1; opacity: .22; position: absolute; top: .75rem; right: 1.25rem; }
-.quarter-card__title { font-size: 1.15rem; font-weight: 800; margin-top: .5rem; }
-.quarter-card__desc { font-size: .9rem; opacity: .85; margin-top: .35rem; flex: 1; }
+.quarter-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0, 0, 0, .1); }
+.quarter-card__num { font-size: 4.5rem; font-weight: 800; line-height: 1; opacity: .2; position: absolute; top: 1rem; right: 1.5rem; }
+.quarter-card__title { font-size: 1.4rem; font-weight: 800; margin-top: 1rem; }
+.quarter-card__desc { font-size: 1rem; opacity: .85; margin-top: .5rem; flex: 1; }
 
 .quarter-card__btn {
-  align-self: flex-start; margin-top: 1rem; padding: .5rem 1rem;
-  border-radius: 999px; background: rgba(255, 255, 255, .85);
-  color: #1f2937; font-size: .85rem; font-weight: 700; text-decoration: none; transition: background .2s;
-  border: none;
+  align-self: flex-start; margin-top: 1.5rem; padding: .65rem 1.25rem;
+  border-radius: 999px; background: #fff;
+  color: #1f2937; font-size: .95rem; font-weight: 700; text-decoration: none; transition: background .2s;
+  border: none; box-shadow: 0 4px 12px rgba(0,0,0,.05);
 }
-.quarter-card__btn:hover { background: #fff; text-decoration: none; }
-
-/* Аккордеон внутри карточки */
-.quarter-card__topics {
-  display: none;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(0,0,0,0.1);
-}
-.quarter-card.is-open .quarter-card__topics { display: block; }
-
-.quarter-topic-link {
-  display: block;
-  padding: 0.4rem 0;
-  font-size: 0.9rem;
-  color: #1f2937;
-  opacity: 0.9;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-.quarter-topic-link:hover { opacity: 1; text-decoration: underline; }
+.quarter-card__btn:hover { background: #fefaf6; box-shadow: 0 6px 16px rgba(0,0,0,.1); }
 
 /* Цвета четвертей */
 .q1 { background: #ffedd5; color: #9a3412; }
@@ -220,7 +200,7 @@ button { font-family: inherit; cursor: pointer; }
 .q4 { background: #f3e8ff; color: #6b21a8; }
 
 /* ============================================================
-   8. ABOUT & FOOTER & OVERLAY
+   8. ABOUT, FOOTER, OVERLAY
    ============================================================ */
 .about { max-width: 1120px; margin: 2rem auto; padding: 2.5rem 1.5rem; background: #1f2937; color: #e5e7eb; border-radius: 28px; }
 .about h2 { color: #fff; margin-bottom: .75rem; font-size: var(--fs-xl); }
@@ -231,7 +211,60 @@ button { font-family: inherit; cursor: pointer; }
 .overlay.is-visible { display: block; }
 
 /* ============================================================
-   9. MEDIA QUERIES
+   9. МОДАЛЬНОЕ ОКНО (ДЛЯ СПИСКА ТЕМ)
+   ============================================================ */
+.modal {
+  display: none;
+  position: fixed; inset: 0; z-index: 300;
+  align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.modal.is-open { display: flex; }
+.modal__overlay {
+  position: absolute; inset: 0; background: rgba(31, 41, 55, .6);
+  backdrop-filter: blur(4px);
+}
+.modal__content {
+  position: relative; background: #fff; width: 100%; max-width: 500px;
+  border-radius: 24px; padding: 2rem;
+  box-shadow: var(--shadow-lg); z-index: 10;
+  max-height: 85vh; display: flex; flex-direction: column;
+  animation: modalFadeIn .2s ease-out;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal__close {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #f3f4f6; border: none; font-size: 1.5rem; color: #4b5563;
+  transition: background .2s;
+}
+.modal__close:hover { background: #e5e7eb; }
+
+.modal__title { font-size: var(--fs-xl); margin-bottom: 1.5rem; color: #1f2937; padding-right: 2rem; }
+.modal__list { overflow-y: auto; display: flex; flex-direction: column; gap: .5rem; }
+
+.modal-topic {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem; border-radius: 12px; background: #f9fafb;
+  border: 1px solid #f3f4f6; text-decoration: none; color: #374151;
+  transition: background .2s, border-color .2s;
+  font-weight: 500;
+}
+.modal-topic:hover { background: #fff7ed; border-color: #fde8d3; text-decoration: none; }
+.modal-topic__num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 700; color: var(--c-primary-d);
+  flex-shrink: 0; box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+/* ============================================================
+   10. MEDIA QUERIES
    ============================================================ */
 @media (min-width: 681px) {
   .quarters { grid-template-columns: repeat(2, 1fr); }
