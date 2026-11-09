@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Интерактивный учебник по вероятности и статистике для 8 класса">
   <title>Вероятность и статистика · 8 класс</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,14 +13,26 @@
 
   <header class="navbar">
     <a href="index.html" class="navbar__logo">
-      <img src="images/logo.svg" alt="" class="navbar__logo-img">
+      <span class="navbar__logo-icon">P</span>
       <span>Вероятность</span>
     </a>
+
     <button class="navbar__burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
+
     <nav class="navbar__nav" id="mainNav">
-      <a href="#quarters">Курс</a>
+      <!-- Выпадающее меню "Курс" -->
+      <div class="dropdown" id="courseDropdown">
+        <button class="dropdown__toggle" id="courseToggle" aria-expanded="false">
+          Курс
+          <svg class="dropdown__chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown__menu" id="courseMenu" role="menu"></div>
+      </div>
+
       <a href="#about">О проекте</a>
     </nav>
   </header>
@@ -32,21 +43,18 @@
     <section class="hero">
       <div class="hero__text">
         <span class="hero__badge">8 класс · интерактивный учебник</span>
-        <h1 class="hero__title">Мир вероятности и&nbsp;статистики</h1>
+        <h1 class="hero__title">Мир вероятности и статистики</h1>
         <p class="hero__desc">
           Четыре четверти, 34 темы. Теория, примеры и домашние задания — в одном месте.
         </p>
         <a href="#quarters" class="btn btn--primary">Начать обучение →</a>
       </div>
       <div class="hero__art" aria-hidden="true">
-        <svg viewBox="0 0 240 240" class="hero__svg">
-          <circle cx="120" cy="120" r="110" fill="#fff7ed"/>
-          <circle cx="120" cy="120" r="85" fill="#fed7aa"/>
-          <circle cx="120" cy="120" r="60" fill="#fb923c"/>
-          <text x="120" y="140" text-anchor="middle"
-                font-family="Manrope, sans-serif" font-size="56"
-                font-weight="800" fill="#fff">P</text>
-        </svg>
+        <div class="hero__circle hero__circle--1"></div>
+        <div class="hero__circle hero__circle--2"></div>
+        <div class="hero__circle hero__circle--3">
+          <span>P</span>
+        </div>
       </div>
     </section>
 
@@ -76,6 +84,9 @@
   <footer class="footer">
     <p>© 2025 · Учебный проект · Вероятность и статистика · 8 класс</p>
   </footer>
+
+  <!-- Подложка для закрытия меню по клику вне -->
+  <div class="overlay" id="overlay"></div>
 
   <script src="js/main.js"></script>
 </body>
