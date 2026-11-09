@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интерактивный учебник по вероятности и статистике для 8 класса">
   <title>Вероятность и статистика · 8 класс</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,7 +17,7 @@
       <img src="images/logo.svg" alt="" class="navbar__logo-img">
       <span>Вероятность</span>
     </a>
-    <button class="navbar__burger" id="burgerBtn" aria-label="Меню">
+    <button class="navbar__burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav class="navbar__nav" id="mainNav">
@@ -24,27 +28,29 @@
 
   <main>
 
-    <!-- HERO: две колонки -->
+    <!-- HERO -->
     <section class="hero">
       <div class="hero__text">
         <span class="hero__badge">8 класс · интерактивный учебник</span>
-        <h1 class="hero__title">Мир вероятности<br>и статистики</h1>
+        <h1 class="hero__title">Мир вероятности и&nbsp;статистики</h1>
         <p class="hero__desc">
           Четыре четверти, 34 темы. Теория, примеры и домашние задания — в одном месте.
         </p>
         <a href="#quarters" class="btn btn--primary">Начать обучение →</a>
       </div>
       <div class="hero__art" aria-hidden="true">
-        <!-- Декоративная SVG-иллюстрация -->
-        <svg viewBox="0 0 200 200" class="hero__svg">
-          <circle cx="100" cy="100" r="80" fill="#fff7ed"/>
-          <circle cx="100" cy="100" r="60" fill="#fed7aa"/>
-          <text x="100" y="115" text-anchor="middle" font-size="48" font-weight="800" fill="#ea580c">P</text>
+        <svg viewBox="0 0 240 240" class="hero__svg">
+          <circle cx="120" cy="120" r="110" fill="#fff7ed"/>
+          <circle cx="120" cy="120" r="85" fill="#fed7aa"/>
+          <circle cx="120" cy="120" r="60" fill="#fb923c"/>
+          <text x="120" y="140" text-anchor="middle"
+                font-family="Manrope, sans-serif" font-size="56"
+                font-weight="800" fill="#fff">P</text>
         </svg>
       </div>
     </section>
 
-    <!-- Объявления: одна компактная полоса -->
+    <!-- Объявления -->
     <div class="notice">
       <span class="notice__icon">📢</span>
       <p><strong>Контрольная</strong> по II четверти — 15 декабря. Повторите формулы дисперсии.</p>
@@ -56,7 +62,7 @@
       <div class="quarters" id="quartersGrid"></div>
     </section>
 
-    <!-- О проекте: коротко, на цветном фоне -->
+    <!-- О проекте -->
     <section class="about" id="about">
       <h2>О проекте</h2>
       <p>
@@ -68,7 +74,7 @@
   </main>
 
   <footer class="footer">
-    <p>© 2025 · Учебный проект</p>
+    <p>© 2025 · Учебный проект · Вероятность и статистика · 8 класс</p>
   </footer>
 
   <script src="js/main.js"></script>
